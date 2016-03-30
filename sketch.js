@@ -16,7 +16,6 @@ function draw() {
 }
 
 function Walker (){
-	console.log('walker constructor');
 	this.x = 150;
 	this.y = 150;
 
@@ -24,59 +23,52 @@ function Walker (){
 		stroke(0);
 		point(this.x,this.y);
 	}
+
 	this.step = function(){
-		//var choice = Math.floor(Math.random() * (4 - 0)) + 0;
 		var r = random(1);
-		
-	
-			if (mouseX > 200) {
-			  if (r < 0.5) {
-			      this.x++;
-			    } else if (r < 0.65) {
-			      this.x--;
-			    } else if (r < 0.85) {
-			      this.y++;
-			    } else {
-			      this.y--;
-			    }
-		    } else if (mouseX<200) {
-		    	if (r < 0.5) {
-			      this.x--
-			    } else if (r < 0.65) {
-			      this.x++;
-			    } else if (r < 0.85) {
-			      this.y++;
-			    } else {
-			      this.y--;
-			    }
-		      
-		    } else if (mouseY>200) {
-		      if (r < 0.5) {
-			      this.y++;
-			    } else if (r < 0.65) {
-			      this.x--;
-			    } else if (r < 0.85) {
-			      this.x++;
-			    } else {
-			      this.y--;
-			    }
-		    } else {
-		      if (r < 0.5) {
-			      this.y--;
-			    } else if (r < 0.65) {
-			      this.x--;
-			    } else if (r < 0.85) {
-			      this.y++;
-			    } else {
-			      this.x++;
-			    }
-		    }
-			//50% chance of moving in the direction 
+		var posDiff = {x:mouseX-this.x, y:mouseY-this.y};
+		console.log(posDiff);
 
-		
 
-		
+		if(r < 0.5){
+			if(posDiff.x >0){
+				this.x++;
+			}
+			if(posDiff.y >0){
+				this.y++;
+			}
+			if(posDiff.x <0){
+				this.x--;
+			}
+			if(posDiff.y <0){
+				this.y--;
+			}
+		}else{
+			 if (r < 0.25) {
+ 		      this.x++;
+ 			    } 
+ 			    else if (r < 0.50) {
+ 			      this.x--;
+ 			    } 
+ 			    else if (r < 0.75) {
+ 			      this.y++;
+ 			    } 
+ 			    else {
+ 			      this.y--;
+ 		    }
+		}
+
+		// if (r < 0.25) {
+ 	// 	      this.x++;
+ 	// 		    } 
+ 	// 		    else if (r < 0.50) {
+ 	// 		      this.x--;
+ 	// 		    } 
+ 	// 		    else if (r < 0.75) {
+ 	// 		      this.y++;
+ 	// 		    } 
+ 	// 		    else {
+ 	// 		      this.y--;
+ 	// 	    }
 	}
-
-
 }
